@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body>
+<h3><span style="font-weight: bold; font-family: Arial;">Escalonar
+v 1.0</span><br>
+</h3>
+<address><a href="#Introdu%E7%E3o">Introdu&ccedil;&atilde;o</a><br>
+<a href="#Considera%E7%F5es_Gerais">Considera&ccedil;&otilde;es
+Gerais</a><br>
+<a href="#Requisitos">Requisitos</a><br>
+<a href="#Tela_Inicial">Tela
+Inicial</a><br>
+<a href="#Algoritmos_implementados">Algoritmos
+Implementados</a><br>
+<a href="#Entrada_e_Sa%EDda_de_Processos">Entrada
+e Sa&iacute;da de
+Processos</a><br>
+<a href="#Digita%E7%E3o_de_Processos">Digita&ccedil;&atilde;o
+de
+Processos</a><br>
+<a href="#Op%E7%F5es">Op&ccedil;&otilde;es</a><br>
+<a href="#Gerar_sa%EDda_em_formato_pdf">Gerar
+sa&iacute;da em pdf</a><br>
+<a href="#Licen%E7a">Licen&ccedil;a</a><br>
+<br>
+</address>
+<h4><a name="Introdu&ccedil;&atilde;o"></a><span style="color: rgb(0, 0, 153);">Introdu&ccedil;&atilde;o</span></h4>
+<span style="font-size: 10pt;"><span
+ style="font-family: Arial; font-size: 10pt;">Este
+software foi escrito
+para auxiliar o ensino de algoritmos de escalonamento de processos em
+sistemas operacionais. <br>
+Como resultado de sua execu&ccedil;&atilde;o &eacute;
+exibido um
+gr&aacute;fico de Gantt representando a escolha e
+execu&ccedil;&atilde;o de cada processo no escalonamento, e
+tamb&eacute;m s&atilde;o calculados&nbsp;os tempos de
+espera e total de
+execu&ccedil;&atilde;o de cada processo, e os tempos
+m&eacute;dios para
+o conjunto de processos fornecido. <br>
+<br>
+</span></span>
+<h4><a name="Considera&ccedil;&otilde;es_Gerais"></a><span
+ style="color: rgb(0, 0, 153);">Considera&ccedil;&otilde;es
+Gerais</span></h4>
+<ul style="font-family: Arial;">
+  <li><span style="font-size: 10pt;">O ambiente considerado
+&eacute;
+monopricessado.</span><span style="font-size: 10pt;"></span></li>
+  <li><span style="font-size: 10pt;">Todos os processos
+s&atilde;o
+orientados (limitados) a processador, ou seja, n&atilde;o fazem I/O.<br>
+    </span></li>
+  <li><span style="font-size: 10pt;">A trova de contexto tem
+dura&ccedil;&atilde;o nula (zero).</span></li>
+  <li><span style="font-size: 10pt;">N&atilde;o
+s&atilde;o exibidas
+unidades de medida para os tempos, mas s&atilde;o considerados
+valores <span style="font-weight: bold;">inteiros</span>
+representando
+milessegundos. <br>
+    </span></li>
+  <li><span style="font-size: 10pt;">A escolha dos processos no
+escalonamento segue a seguinte ordem:</span></li>
+</ul>
+<ol style="font-family: Arial;">
+  <ol>
+    <li><span style="font-size: 10pt;">pol&iacute;tica do
+algoritmo
+(por exemplo, dura&ccedil;&atilde;o no caso do SJF)<br>
+      </span></li>
+    <li><span style="font-size: 10pt;">ordem de chegada</span></li>
+    <li><span style="font-size: 10pt;">nome do processo (como
+&uacute;ltimo crit&eacute;rio para desempate)</span></li>
+  </ol>
+</ol>
+<h4 style="height: 20px;"><a name="Requisitos"></a><span
+ style="color: rgb(0, 0, 153);">Requisitos</span></h4>
+&Eacute; necess&aacute;rio Java 6 instalado na
+m&aacute;quina para a
+execu&ccedil;&atilde;o correta de todas as funcionalidades do
+aplicativo.
+<h4 style="height: 20px;"><a name="Tela_Inicial"></a><span
+ style="color: rgb(0, 0, 153);">Tela Inicial</span></h4>
+<img style="width: 570px; height: 384px;" alt="Tela inicial"
+ src="img/telaprin.png"><br>
+<br>
+Na tela inicial do aplicativo &eacute; poss&iacute;vel acionar
+os
+seguintes menus: <br>
+<ul>
+  <li>Escalonador: permite
+escolher qual o algoritmo de escalonamento
+ser&aacute; executado. Uma marca ser&aacute; mostrada no menu
+indicando
+qual o algoritmo atualmente selecionado. O default &eacute; FIFO;</li>
+  <li>Processos: permite inserir
+os processos que ser&atilde;o
+utilizados no escalonamento ou grav&aacute;-los em arquivo para uso
+posterior;</li>
+  <li>Op&ccedil;&otilde;es:
+permite alterar op&ccedil;&otilde;es de
+interface do aplicativo</li>
+  <li>Extra: permite exportar os
+resultados do escalonamento&nbsp;para
+um &nbsp;arquivo no formato pdf;</li>
+  <li>Ajuda:
+informa&ccedil;&otilde;es b&aacute;sicas sobre o
+funcionamento do aplicativo.</li>
+</ul>
+Tamb&eacute;m na tela principal &eacute; poss&iacute;vel
+acionar o
+bot&atilde;o <span style="font-style: italic;">calcular</span>
+que
+executa o escalonamento de acordo com os par&acirc;metros
+fornecidos.Como exemplo de resultado de execu&ccedil;&atilde;o,
+observe
+a tela a seguir, onde s&atilde;o escalonados sete processos
+utilizando
+o algoritmo FCFS.<br>
+O quadro &agrave; esquerda exibe os dados de entrada,&nbsp;o
+quadro
+&agrave; direita exibe os dados resultantes do escalonamento. O
+gr&aacute;fico exibe a ordem em que os processos foram escalonados.
+As
+cores s&atilde;o aleat&oacute;rias e podem ser alteradas
+clicando
+novamente no bot&atilde;o <span style="font-style: italic;">calcular</span>.
+Com os mesmos dados de entrada pode-se escolher outro algoritmo no menu
+<span style="font-style: italic;">Escalonar</span>
+e clicar no
+bot&atilde;o <span style="font-style: italic;">calcular</span>
+para
+obter o resultado do escalonamento pelo algoritmo escolhido.<br>
+<br>
+<img style="width: 570px; height: 384px;" alt="" src="img/telaprin2.png"><br>
+<h4><br>
+</h4>
+<h4><a name="Algoritmos_implementados"></a><span
+ style="color: rgb(0, 0, 153);">Algoritmos
+implementados</span></h4>
+Os seguintes algoritmos foram implementados:<br>
+<br>
+<ul>
+  <li>FCFS (<span style="font-style: italic;"> First Come-First Served
+: O primeiro</span> <span style="font-style: italic;">a</span> <span
+ style="font-style: italic;">&nbsp;chegar
+&eacute; o primeiro a ser
+atendido</span> ):</li>
+  <ul>
+    <li>Algoritmo n&atilde;o
+preempitivo. Escalona os processos por
+ordem de chegada</li>
+  </ul>
+  <li>SJF&nbsp;( <span style="font-style: italic;">Shortest Job First
+: Menor processo primeiro</span> )</li>
+  <ul>
+    <li>Algoritmo n&atilde;o
+preemptivo. Escalona os processos
+(considerando os processos que j&aacute; est&atilde;o na fila
+de
+prontos) de acordo com o tempo de dura&ccedil;&atilde;o. Os
+processos
+de menor dura&ccedil;&atilde;o s&atilde;o escalonados
+primeiro.</li>
+  </ul>
+  <li>SRT (&nbsp;<span style="font-style: italic;">Shortest Remaining
+Time: Menor tempo restante primeiro</span>
+) &nbsp;</li>
+  <ul>
+    <li>&Eacute; a
+vers&atilde;o preemptiva do SJF. Escalona os
+processos (considerando
+os
+processos que j&aacute; est&atilde;o na fila de prontos) de
+acordo com
+o tempo de
+dura&ccedil;&atilde;o restante. Os processos de menor
+dura&ccedil;&atilde;o
+restante s&atilde;o escalonados primeiro. Por ser preemptivo, um
+processo pode
+ser interrompido caso durante a sua execu&ccedil;&atilde;o
+chegue um
+outro processo cuja dura&ccedil;&atilde;o seja menor do que a
+dura&ccedil;&atilde;o restante deste processo em
+execu&ccedil;&atilde;o. Dura&ccedil;&atilde;o restante
+significa o
+tempo que falta para o processo terminar sua
+execu&ccedil;&atilde;o.</li>
+  </ul>
+  <li>PRIORIDADE NP</li>
+  <ul>
+    <li>Algoritmo n&atilde;o
+preemptivo. Escalona os processos
+(considerando os
+processos que j&aacute; est&atilde;o na fila de prontos) de
+acordo com
+o seu valor de prioridade. Os processos com maior valor de prioridade
+s&atilde;o escalonados primeiro.</li>
+  </ul>
+  <li>PRIORIDADE&nbsp;P</li>
+  <ul>
+    <li>Algoritmo preemptivo.
+Escalona os processos (considerando os
+processos que j&aacute; est&atilde;o na fila de prontos) de
+acordo com
+o seu valor de
+prioridade. Os processos com maior valor de prioridade s&atilde;o
+escalonados
+primeiro.&nbsp;Por ser preemptivo, um processo pode ser
+interrompido
+caso durante a
+sua execu&ccedil;&atilde;o chegue um outro processo cuja
+prioridade
+seja maior do que a prioridade deste processo em
+execu&ccedil;&atilde;o.</li>
+  </ul>
+  <li>ROUND ROBIN</li>
+  <ul>
+    <li>Algoritmo preemptivo.
+Escalona os processos (considerando os
+processos que j&aacute; est&atilde;o na fila de prontos) de
+acordo a
+ordem de entrada na fila. A cada&nbsp;<span style="font-style: italic;">Quamtum</span>
+de tempo h&aacute; uma interrup&ccedil;&atilde;o do
+processo em
+execu&ccedil;&atilde;o para que o pr&oacute;ximo processo
+da fila seja
+executado.</li>
+  </ul>
+</ul>
+<h4><br>
+</h4>
+<h4><a name="Entrada_e_Sa&iacute;da_de_Processos"></a><span
+ style="color: rgb(0, 0, 153);">Entrada e
+Sa&iacute;da de Processos</span></h4>
+<ul>
+  <li>Lendo de um arquivo: carrega
+os dados dos processos de entrada a
+partir do arquivo fornecido como entrada. &Eacute; feita uma
+valida&ccedil;&atilde;o para verificar se o arquivo
+est&aacute; no
+formato esperado e, em caso de formato ou dados inv&aacute;lidos, o
+arquivo n&atilde;o &eacute; carregado.</li>
+  <li>Gravando em um arquivo:
+grava em arquivo os dados dos processos
+de entrada. Os dados de sa&iacute;da, calculados no escalonamento,
+n&atilde;o s&atilde;o gravados.</li>
+  <li>Digitando os dados: abre a
+tela para digita&ccedil;&atilde;o dos
+processos a serem usados no escalonamento.&nbsp;</li>
+</ul>
+Os arquivos utilizados como entrada e sa&iacute;da s&atilde;o
+do tipo
+texto, com a extens&atilde;o <span style="font-style: italic;">.prc</span>.
+<br>
+Os dados de cada um dos processos deve ser colocado em uma linha
+separada. Cada uma destas linhas deve conter as seguintes
+informa&ccedil;&otilde;es
+(em ordem) separadas por ponto-e-v&iacute;rgula:<br>
+<br>
+<span style="font-style: italic;">chegada
+; dura&ccedil;&atilde;o ;
+prioridade<br>
+<br>
+</span>Os valores devem ser
+n&uacute;meros inteiros.<br>
+<br>
+<h4><a name="Digita&ccedil;&atilde;o_de_Processos"></a><span
+ style="color: rgb(0, 0, 153);">Digita&ccedil;&atilde;o
+de Processos</span></h4>
+<img style="width: 403px; height: 293px;" alt="" src="img/processos.png"><br>
+<br>
+Nesta tela &eacute; poss&iacute;vel digitar os processos que
+ser&atilde;o utilizados como entrada do escalonamento. Caso nenhum
+processo tenha sido digitado ainda, somente uma linha ser&aacute;
+apresentada com o r&oacute;tulo <span style="font-style: italic;">P1</span>
+sendo apresentado no nome do processo. Os r&oacute;tulos
+s&atilde;o
+gerados automaticamente n&atilde;o sendo permitido sua
+edi&ccedil;&atilde;o.<br>
+Se j&aacute; houverem dados de processos digitados anteriormente,
+todos
+eles ser&atilde;o apresentados para edi&ccedil;&atilde;o,
+como
+ilustrado a seguir.<br>
+<br>
+<img style="width: 406px; height: 301px;" alt=""
+ src="img/processos2.png"><br>
+<br>
+Os seguntes bot&otilde;es s&atilde;o apresentados na tela de
+edi&ccedil;&atilde;o:<br>
+<ul>
+  <li>Inserir:&nbsp;acrescenta
+uma nova linha&nbsp;para entrada de um
+novo processo;</li>
+  <li>Remover: remove a linha onde
+o cursor de edi&ccedil;&atilde;o
+estiver posicionado;</li>
+  <li>Cancelar: cancela todo o
+efeito de edi&ccedil;&atilde;o atual
+voltando &agrave; tela inicial sem nenhuma
+modifica&ccedil;&atilde;o
+nos processos;</li>
+  <li>OK: confirma a
+edi&ccedil;&atilde;o feita no conjunto de
+processos. Os dados s&atilde;o validados antes de serem atualizados
+na
+tela principal.</li>
+</ul>
+Os r&oacute;tulos dos processos ser&atilde;o refeitos
+(renumerados a
+partir de 1) caso tenha havido remo&ccedil;&atilde;o de algum
+processo.
+<h4><a name="Op&ccedil;&otilde;es"></a><span style="color: rgb(0, 0, 153);">Op&ccedil;&otilde;es</span></h4>
+<ul>
+  <li>Alterando o idioma: Os
+idiomas dispon&iacute;veis s&atilde;o
+Portugu&ecirc;s e Ingl&ecirc;s. O idioma padr&atilde;o ao
+abrir o
+aplicativo &eacute; determinado pelo Sistema Operacional em uso.</li>
+  <li>Alterando o tipo de
+gr&aacute;fco: Existem tr&ecirc;s diferentes
+modelos de desenho aplicados para o gr&aacute;fico que podem ser
+escolhidos nesta op&ccedil;&atilde;o de menu.</li>
+</ul>
+<h4><a name="Gerar_sa&iacute;da_em_formato_pdf"></a><span
+ style="color: rgb(0, 0, 153);">Gerar sa&iacute;da
+em formato pdf</span></h4>
+Por meio desta op&ccedil;&atilde;o &eacute;
+poss&iacute;vel gerar um
+arquivo em formato pdf contendo os dados dos processos de entrada, o
+gr&aacute;fico de Gantt resultante, e dos dados calculados para o
+conjunto de processos durante o escalonamento.<br>
+<br>
+<h4><a name="Licen&ccedil;a"></a><span style="color: rgb(0, 0, 153);">Licen&ccedil;a</span></h4>
+<a rel="license"
+ href="http://creativecommons.org/licenses/by-nc-nd/3.0/br/"><img
+ alt="Licen&ccedil;a Creative Commons"
+ style="border: 0px solid ; width: 80px; height: 15px;"
+ src="img/80x15.png"></a><br>
+A obra <span xmlns:dct="http://purl.org/dc/terms/"
+ href="http://purl.org/dc/dcmitype/InteractiveResource"
+ property="dct:title" rel="dct:type">Escalonar</span> de <a
+ xmlns:cc="http://creativecommons.org/ns#" href="www.programar.pro.br"
+ property="cc:attributionName" rel="cc:attributionURL">Emerson dos
+Santos Paduan</a> foi licenciada com uma Licen&ccedil;a <a
+ rel="license"
+ href="http://creativecommons.org/licenses/by-nc-nd/3.0/br/">Creative
+Commons - Atribui&ccedil;&atilde;o - Uso N&atilde;o-Comercial - Obras
+Derivadas Proibidas 3.0 Brasil</a>.
+<br>
+<br>
+<br>
+</body>
+</html>
